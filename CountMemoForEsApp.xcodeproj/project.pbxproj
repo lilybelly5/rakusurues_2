@@ -14,6 +14,7 @@
 		8161393A21FDD2EF00A24398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8161393921FDD2EF00A24398 /* Assets.xcassets */; };
 		8161393D21FDD2EF00A24398 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8161393B21FDD2EF00A24398 /* LaunchScreen.storyboard */; };
 		8161394821FDD2EF00A24398 /* CountMemoForEsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8161394721FDD2EF00A24398 /* CountMemoForEsAppTests.swift */; };
+		8161395321FDD40600A24398 /* MemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8161395221FDD40600A24398 /* MemoTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		8161394321FDD2EF00A24398 /* CountMemoForEsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountMemoForEsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8161394721FDD2EF00A24398 /* CountMemoForEsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountMemoForEsAppTests.swift; sourceTree = "<group>"; };
 		8161394921FDD2EF00A24398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8161395221FDD40600A24398 /* MemoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				8161392F21FDD2EE00A24398 /* AppDelegate.swift */,
+				8161395221FDD40600A24398 /* MemoTableViewController.swift */,
 				8161393121FDD2EE00A24398 /* ViewController.swift */,
 				8161393321FDD2EE00A24398 /* Main.storyboard */,
 				8161393921FDD2EF00A24398 /* Assets.xcassets */,
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8161393221FDD2EE00A24398 /* ViewController.swift in Sources */,
+				8161395321FDD40600A24398 /* MemoTableViewController.swift in Sources */,
 				8161393021FDD2EE00A24398 /* AppDelegate.swift in Sources */,
 				8161393821FDD2EE00A24398 /* CountMemoForEsApp.xcdatamodeld in Sources */,
 			);
