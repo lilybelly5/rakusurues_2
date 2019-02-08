@@ -15,6 +15,8 @@
 		8161393D21FDD2EF00A24398 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8161393B21FDD2EF00A24398 /* LaunchScreen.storyboard */; };
 		8161394821FDD2EF00A24398 /* CountMemoForEsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8161394721FDD2EF00A24398 /* CountMemoForEsAppTests.swift */; };
 		8161395321FDD40600A24398 /* MemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8161395221FDD40600A24398 /* MemoTableViewController.swift */; };
+		C2F50E1A616D64F08EB457D1 /* Pods_CountMemoForEsAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E8489B7AABF2FE1A5A2911 /* Pods_CountMemoForEsAppTests.framework */; };
+		FB3A866E140DF461F043318D /* Pods_CountMemoForEsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE61F8B640F62FBDB2F1AD1 /* Pods_CountMemoForEsApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BE61F8B640F62FBDB2F1AD1 /* Pods_CountMemoForEsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountMemoForEsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D06EE107FDE1EB131EA7841 /* Pods-CountMemoForEsAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountMemoForEsAppTests.debug.xcconfig"; path = "Target Support Files/Pods-CountMemoForEsAppTests/Pods-CountMemoForEsAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		304A0313011A4AD6B4FE6780 /* Pods-CountMemoForEsAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountMemoForEsAppTests.release.xcconfig"; path = "Target Support Files/Pods-CountMemoForEsAppTests/Pods-CountMemoForEsAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		5B8F4FB2C3E8D633829006D1 /* Pods-CountMemoForEsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountMemoForEsApp.debug.xcconfig"; path = "Target Support Files/Pods-CountMemoForEsApp/Pods-CountMemoForEsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		8161392C21FDD2EE00A24398 /* CountMemoForEsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountMemoForEsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8161392F21FDD2EE00A24398 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8161393121FDD2EE00A24398 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +46,8 @@
 		8161394721FDD2EF00A24398 /* CountMemoForEsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountMemoForEsAppTests.swift; sourceTree = "<group>"; };
 		8161394921FDD2EF00A24398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8161395221FDD40600A24398 /* MemoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewController.swift; sourceTree = "<group>"; };
+		9A46EF802300F8041FFB0588 /* Pods-CountMemoForEsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountMemoForEsApp.release.xcconfig"; path = "Target Support Files/Pods-CountMemoForEsApp/Pods-CountMemoForEsApp.release.xcconfig"; sourceTree = "<group>"; };
+		B5E8489B7AABF2FE1A5A2911 /* Pods_CountMemoForEsAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountMemoForEsAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB3A866E140DF461F043318D /* Pods_CountMemoForEsApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,18 +63,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2F50E1A616D64F08EB457D1 /* Pods_CountMemoForEsAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07BB40131F3684BE1F2EAA97 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B8F4FB2C3E8D633829006D1 /* Pods-CountMemoForEsApp.debug.xcconfig */,
+				9A46EF802300F8041FFB0588 /* Pods-CountMemoForEsApp.release.xcconfig */,
+				0D06EE107FDE1EB131EA7841 /* Pods-CountMemoForEsAppTests.debug.xcconfig */,
+				304A0313011A4AD6B4FE6780 /* Pods-CountMemoForEsAppTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		34C2BDC431CFE49E769E838D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0BE61F8B640F62FBDB2F1AD1 /* Pods_CountMemoForEsApp.framework */,
+				B5E8489B7AABF2FE1A5A2911 /* Pods_CountMemoForEsAppTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8161392321FDD2EE00A24398 = {
 			isa = PBXGroup;
 			children = (
 				8161392E21FDD2EE00A24398 /* CountMemoForEsApp */,
 				8161394621FDD2EF00A24398 /* CountMemoForEsAppTests */,
 				8161392D21FDD2EE00A24398 /* Products */,
+				07BB40131F3684BE1F2EAA97 /* Pods */,
+				34C2BDC431CFE49E769E838D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,9 +141,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8161394C21FDD2EF00A24398 /* Build configuration list for PBXNativeTarget "CountMemoForEsApp" */;
 			buildPhases = (
+				3C736849EDB5D6B0E5A8490D /* [CP] Check Pods Manifest.lock */,
 				8161392821FDD2EE00A24398 /* Sources */,
 				8161392921FDD2EE00A24398 /* Frameworks */,
 				8161392A21FDD2EE00A24398 /* Resources */,
+				44DEE934521E879E5B92E3AD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,6 +160,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8161394F21FDD2EF00A24398 /* Build configuration list for PBXNativeTarget "CountMemoForEsAppTests" */;
 			buildPhases = (
+				D1E1B8E486A47D571C4A0F52 /* [CP] Check Pods Manifest.lock */,
 				8161393F21FDD2EF00A24398 /* Sources */,
 				8161394021FDD2EF00A24398 /* Frameworks */,
 				8161394121FDD2EF00A24398 /* Resources */,
@@ -197,6 +232,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3C736849EDB5D6B0E5A8490D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CountMemoForEsApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		44DEE934521E879E5B92E3AD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CountMemoForEsApp/Pods-CountMemoForEsApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CountMemoForEsApp/Pods-CountMemoForEsApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1E1B8E486A47D571C4A0F52 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CountMemoForEsAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8161392821FDD2EE00A24398 /* Sources */ = {
@@ -366,10 +470,11 @@
 		};
 		8161394D21FDD2EF00A24398 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B8F4FB2C3E8D633829006D1 /* Pods-CountMemoForEsApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KBS7R434AZ;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CountMemoForEsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -384,10 +489,11 @@
 		};
 		8161394E21FDD2EF00A24398 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A46EF802300F8041FFB0588 /* Pods-CountMemoForEsApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KBS7R434AZ;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CountMemoForEsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -402,6 +508,7 @@
 		};
 		8161395021FDD2EF00A24398 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D06EE107FDE1EB131EA7841 /* Pods-CountMemoForEsAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -423,6 +530,7 @@
 		};
 		8161395121FDD2EF00A24398 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 304A0313011A4AD6B4FE6780 /* Pods-CountMemoForEsAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
