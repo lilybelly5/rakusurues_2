@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+// 詳細表示画面
 class DetailViewController: UIViewController {
     
 
@@ -29,7 +29,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //入力できないようにする
+        //入力不可
         textData.isEditable = false
         
         
@@ -40,7 +40,6 @@ class DetailViewController: UIViewController {
             numdata.text = detailData.memoNum
             dateData.text = detailData.memoDate
         }
-//        print(detailData)
     }
     
     @IBAction func editButton(_ sender: Any) {

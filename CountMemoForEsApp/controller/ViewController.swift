@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+//データを保存する画面
 class ViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate {
     //それぞれUI部品を定義
     @IBOutlet var titleField: UITextField!
@@ -51,22 +52,9 @@ class ViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate {
         dateField.delegate = self
         
         // メモがなければ新規作成
-        if memo == nil {
-//            //NSPersistentContainer内のNSManagedObjectContextを定数contextに代入
-//            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//
-////            memo = Memo(context: context)
-////            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//            var memo = NSEntityDescription.insertNewObject(forEntityName: "Memo", into: context) as! Memo
-////            saveContext()
-/////////// 問題1の修正箇所 ////////////////
-            // ここでMemoオブジェクトを作ってしまうと、「一時保存」しなくても空のオブジェクトが保存されてしまうことがある
-            // memo = Memo(context: context)
-/////////////////////////////////////////
-        } else {
+        if let memo = self.memo{
             //メモの値を表示。
-            editedMemo(memo!)
-
+            editedMemo(memo)
         }
         
         // ピッカー設定
@@ -137,51 +125,7 @@ class ViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate {
 
         // OKボタン押下時のイベント
         let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-//
-//            let editTitle = self.titleField.text
-//            let editCompany = self.companyField.text
-//            let editText = self.memoTextView.text
-//            let editNum = self.memoNumLabel.text
-//            let editDate = self.dateField.text
-//
-//
-////            if let memo = self.memo{
-//                // context(データベースを扱うのに必要)を定義。
-//                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-////               containerがAppDelegate.swiftに書かれているので、まずはappDelegateを定義
-//                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//                //フェッチリクエストのインスタンスを生成する。
-//                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Memo")
-//            let predicate = NSPredicate(format: "title = %@ and company = %@ and memoText = %@ and memoNum = %@ and memoDate = %@", editTitle!, editCompany!, editText!, editNum!, editDate!)
-//                fetchRequest.predicate = predicate
-//
-//                do {
-//                    //フェッチリクエストを実行する。
-//                    let memo = try context.fetch(fetchRequest)
-//                    //実行結果をローカルに保存したNSManagedObjectの配列memoDataに保存する
-//                    var memoData:Memo = memo[0] as! Memo
-//                    //
-//                    memoData.title = self.titleField.text
-//                    memoData.company = self.companyField.text
-//                    memoData.memoText = self.memoTextView.text
-//                    memoData.memoNum = self.memoNumLabel.text
-//                    memoData.memoDate = self.dateField.text
-//
-//                } catch let error as NSError {
-//                    print(error)
-//                }
-//
-//            }
 
-/////////// 問題1の修正箇所 ////////////////
-//            if let memo = self.memo
-//            {
-//                memo.title = self.titleField.text
-//                memo.company = self.companyField.text
-//                memo.memoText = self.memoTextView.text
-//                memo.memoNum = self.memoNumLabel.text
-//                memo.memoDate = self.dateField.text
-//            }
             // 編集の場合は詳細画面から渡されたself.memoを変更、
             // 新規の場合は新しいMemoオブジェクトを作り、現在の日時を入れる_
             let memo: Memo = {
@@ -189,16 +133,17 @@ class ViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate {
                     return memo
                 } else {
                     let memo = Memo(context: self.context)
-                    memo.createdAt = Date()    /////////// 問題2の修正箇所(2) ////////////////
+                    memo.createdAt = Date()
                     return memo
                 }
             }()
+            
             memo.title = self.titleField.text
             memo.company = self.companyField.text
             memo.memoText = self.memoTextView.text
             memo.memoNum = self.memoNumLabel.text
             memo.memoDate = self.dateField.text
-/////////////////////////////////////////
+
             // 上で作成したデータをデータベースに保存
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
 

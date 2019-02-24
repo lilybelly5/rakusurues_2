@@ -110,7 +110,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UISearchDispl
             var predicate: NSPredicate = NSPredicate()
             //%@はstring型を表す
             predicate = NSPredicate(format: "%K = %@","company","\(searchText)")
-//            print(searchText)
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Memo")
 
             fetchRequest.predicate = predicate
@@ -125,7 +124,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UISearchDispl
                 }catch{
                     print(error)
                 }
-//                print(fetchData)
             }
         }
         resultTableView.reloadData()

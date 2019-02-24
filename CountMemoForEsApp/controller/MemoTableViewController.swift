@@ -46,11 +46,10 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
 //            let fetchRequest: NSFetchRequest<Memo> = Memo.fetchRequest()
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Memo")
             fetchRequest.returnsObjectsAsFaults = false
-/////////// 問題2の修正箇所(2) ////////////////
+//            並び順を作成順に指定
             fetchRequest.sortDescriptors = [
                 NSSortDescriptor(key: "createdAt", ascending: true)
             ]
-/////////////////////////////////////////
             memoData = try context.fetch(fetchRequest) as! [Memo]
             // tasksToShow配列を空にする。（同じデータを複数表示しないため）
             for key in memoToShow.keys {
@@ -91,12 +90,9 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
          if editingStyle == .delete {
-    //        特定の行をremoveで消す
-//            memoData.remove(at: indexPath.row)
-            // 削除したいデータのみをfetchする
             // 削除したいデータのcategoryとnameを取得
             let deletedMemoData = memoData[indexPath.row]
-            // そのfetchRequestを満たすデータをfetchしてtask（配列だが要素を1種類しか持たない）に代入し、削除する
+
             do {
                 context.delete(deletedMemoData)
                 memoData.remove(at: indexPath.row)
@@ -138,39 +134,16 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
             let nc = segue.destination as! UINavigationController
             // NavigationControllerの一番目のViewControllerが次の画面
             let vc = nc.topViewController as! DetailViewController
-//
-//             vc.titleStr = self.memoData[(indexPath!.row)].title!
-//             vc.company = self.memoData[(indexPath?.row)!].company!
-//             vc.memoText = self.memoData[(indexPath?.row)!].memoText!
-//             vc.memoNum = self.memoData[(indexPath?.row)!].memoNum!
-//             vc.memoDate = self.memoData[(indexPath?.row)!].memoDate!
-            
             // contextをAddTaskViewController.swiftのcontextへ渡す
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             vc.context = context
+ 
+            //indexPathがnilでないことを確認し、選択した行のデータを引きわたす
             
-/////////// 問題2の修正箇所 ////////////////
-//            // 編集したいデータのtitleとcompanyとmemoTextとmemoNumとmemoDataを取得
-//            let editedTitle = memoData[(indexPath!.row)].title
-//            let editedCompany = memoData[(indexPath!.row)].company
-//            let editedMemoText = memoData[(indexPath!.row)].memoText
-//            let editedMemoNum = memoData[(indexPath!.row)].memoNum
-//            let editedMemoData = memoData[(indexPath!.row)].memoDate
-//
-//            // 先ほど取得した5つのデータに合致するデータのみをfetchするようにfetchRequestを作成
-//            let fetchRequest: NSFetchRequest<Memo> = Memo.fetchRequest()
-//            fetchRequest.predicate = NSPredicate(format: "title = %@ and company = %@ and memoText = %@ and memoNum = %@ and memoDate = %@", editedTitle!, editedCompany!, editedMemoText!, editedMemoNum!, editedMemoData!)
-//            // そのfetchRequestを満たすデータをfetchしてtask(配列だが要素を1種類しか持たないはず）に代入し、それを渡す
-//            do {
-//                let memo = try context.fetch(fetchRequest)
-//                vc.detailData = memo[0]
-//            } catch {
-//                print("Fetching Failed.")
-//            }
-            // 本来であれば、強制アンラップ(!)を使うべきではありません(説明をシンプルにするため、やむなく使っています)。
-            // guard構文などを使って、indexPathがnilでないことを確認しましょう。
-            vc.detailData = self.memoData[indexPath!.row]
-/////////////////////////////////////////
+            if let indexPath = indexPath{
+                vc.detailData = self.memoData[indexPath.row]
+            }
+
 
         default:
             fatalError("Unknow segue: \(identifier)")

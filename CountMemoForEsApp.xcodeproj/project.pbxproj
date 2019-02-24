@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		81215584221ED7FD009ECE21 /* DataConrtoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81215583221ED7FD009ECE21 /* DataConrtoller.swift */; };
 		814D3BBE220EAE2B0099AC00 /* レイヤー 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 814D3BBD220EAE2B0099AC00 /* レイヤー 1.png */; };
 		814D3BC0220EB0170099AC00 /* MemoTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814D3BBF220EB0170099AC00 /* MemoTabBarController.swift */; };
 		814D3BC2220ECA5B0099AC00 /* navbar-edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 814D3BC1220ECA5B0099AC00 /* navbar-edit@2x.png */; };
@@ -46,7 +45,6 @@
 		0D06EE107FDE1EB131EA7841 /* Pods-CountMemoForEsAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountMemoForEsAppTests.debug.xcconfig"; path = "Target Support Files/Pods-CountMemoForEsAppTests/Pods-CountMemoForEsAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		304A0313011A4AD6B4FE6780 /* Pods-CountMemoForEsAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountMemoForEsAppTests.release.xcconfig"; path = "Target Support Files/Pods-CountMemoForEsAppTests/Pods-CountMemoForEsAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		5B8F4FB2C3E8D633829006D1 /* Pods-CountMemoForEsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountMemoForEsApp.debug.xcconfig"; path = "Target Support Files/Pods-CountMemoForEsApp/Pods-CountMemoForEsApp.debug.xcconfig"; sourceTree = "<group>"; };
-		81215583221ED7FD009ECE21 /* DataConrtoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataConrtoller.swift; sourceTree = "<group>"; };
 		814D3BBD220EAE2B0099AC00 /* レイヤー 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "レイヤー 1.png"; sourceTree = "<group>"; };
 		814D3BBF220EB0170099AC00 /* MemoTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTabBarController.swift; sourceTree = "<group>"; };
 		814D3BC1220ECA5B0099AC00 /* navbar-edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-edit@2x.png"; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 				814D3BCB220EDDDE0099AC00 /* DetailViewController.swift */,
 				814D3BBF220EB0170099AC00 /* MemoTabBarController.swift */,
 				814D3BCE221030E60099AC00 /* SearchViewController.swift */,
-				81215583221ED7FD009ECE21 /* DataConrtoller.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -367,7 +364,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8161393221FDD2EE00A24398 /* ViewController.swift in Sources */,
-				81215584221ED7FD009ECE21 /* DataConrtoller.swift in Sources */,
 				814D3BCF221030E60099AC00 /* SearchViewController.swift in Sources */,
 				8161395321FDD40600A24398 /* MemoTableViewController.swift in Sources */,
 				8161393021FDD2EE00A24398 /* AppDelegate.swift in Sources */,
