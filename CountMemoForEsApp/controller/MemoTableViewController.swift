@@ -12,8 +12,6 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
     
     //配列作成(coreData) for tableView
     var memoData:[Memo] = []
-    var memoToShow:[String:[String]] = ["":[]]
-    var memoCategory:[String] = []
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -23,10 +21,13 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
         // 編集ボタンを左上に配置
         navigationItem.leftBarButtonItem = editButtonItem
         editButtonItem.tintColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        
+//        // tableViewにカスタムセルを登録
+//        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
+        tableView.delegate = self
+        tableView.dataSource = self
         //編集中のセル選択を許可
         tableView.allowsSelectionDuringEditing = true
-        
+        self.tableView.rowHeight = 60
         tableView.reloadData()
     }
     
@@ -43,7 +44,6 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         do {
             // CoreDataからデータをfetchしてtasksに格納
-//            let fetchRequest: NSFetchRequest<Memo> = Memo.fetchRequest()
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Memo")
             fetchRequest.returnsObjectsAsFaults = false
 //            並び順を作成順に指定
@@ -51,15 +51,7 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
                 NSSortDescriptor(key: "createdAt", ascending: true)
             ]
             memoData = try context.fetch(fetchRequest) as! [Memo]
-            // tasksToShow配列を空にする。（同じデータを複数表示しないため）
-            for key in memoToShow.keys {
-                memoToShow[key] = []
-                
-            }
-            // 先ほどfetchしたデータをtasksToShow配列に格納する
-//            for memo in memoData {
-//                memoToShow[memo.title!]!.append(memo.title!)
-//            }
+            
             return
         } catch {
             print("Fetching Failed.")
@@ -78,9 +70,18 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
     
     //セルの作成　rowは何行目か
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MemoTitleTableViewCell", for: indexPath)
-        cell.textLabel?.text = self.memoData[indexPath.row].title
-        cell.detailTextLabel?.text = self.memoData[indexPath.row].memoNum
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "MemoTitleTableViewCell", for: indexPath)
+//        cell.textLabel?.text = self.memoData[indexPath.row].title
+//        cell.detailTextLabel?.text = self.memoData[indexPath.row].memoNum
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
+
+        cell.titleLabel.text = self.memoData[indexPath.row].title
+        cell.numLabel.text = self.memoData[indexPath.row].memoNum
+        cell.companyLabel.text = self.memoData[indexPath.row].company
+//
+//
+//        cell.cellDisplay(indexNum: indexPath)
         
         return cell
     }
