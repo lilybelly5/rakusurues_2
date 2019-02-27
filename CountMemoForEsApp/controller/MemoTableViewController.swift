@@ -70,18 +70,11 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
     
     //セルの作成　rowは何行目か
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "MemoTitleTableViewCell", for: indexPath)
-//        cell.textLabel?.text = self.memoData[indexPath.row].title
-//        cell.detailTextLabel?.text = self.memoData[indexPath.row].memoNum
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
 
         cell.titleLabel.text = self.memoData[indexPath.row].title
         cell.numLabel.text = self.memoData[indexPath.row].memoNum
         cell.companyLabel.text = self.memoData[indexPath.row].company
-//
-//
-//        cell.cellDisplay(indexNum: indexPath)
         
         return cell
     }

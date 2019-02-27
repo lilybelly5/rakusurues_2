@@ -17,7 +17,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UISearchDispl
     var searchData:[Memo] = []
     
     @IBOutlet var resultTableView: UITableView!
-    
+ 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,6 +32,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UISearchDispl
         // TableViewの処理をselfに任せる
         resultTableView.dataSource = self
         resultTableView.delegate   = self
+        resultTableView.rowHeight = 60
         
         
     }
@@ -46,8 +47,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UISearchDispl
     }
     //セルの作成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultCell", for: indexPath)
-        cell.textLabel?.text = self.searchData[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultCell", for: indexPath)as! SearchTableViewCell
+        cell.titleLabel?.text = self.searchData[indexPath.row].title
+        cell.companyLabel?.text = self.searchData[indexPath.row].company
+        cell.numLabel?.text = self.searchData[indexPath.row].memoNum
+
         return cell
     }
     
@@ -101,18 +105,24 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UISearchDispl
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText:String) {
+        
+        //検索結果配列を空にする。
+        searchData.removeAll()
 
         if(searchText != ""){
             // AppDelegateクラスのインスタンスを取得
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
-            
-            var predicate: NSPredicate = NSPredicate()
             //%@はstring型を表す
-            predicate = NSPredicate(format: "%K = %@","company","\(searchText)")
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Memo")
-
+            //複数条件かつ部分一致でじ検索
+            let predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or
+                , subpredicates: [
+                    NSPredicate(format: "%K CONTAINS %@","company", "\(searchText)"),
+                    NSPredicate(format: "%K CONTAINS %@", "title","\(searchText)"),
+                    ])
             fetchRequest.predicate = predicate
+            
             let fetchData = try! context.fetch(fetchRequest)
 
             if(!fetchData.isEmpty){
@@ -128,5 +138,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UISearchDispl
         }
         resultTableView.reloadData()
     }
+    
 }
 

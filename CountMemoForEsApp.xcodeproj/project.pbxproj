@@ -25,6 +25,7 @@
 		8161393D21FDD2EF00A24398 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8161393B21FDD2EF00A24398 /* LaunchScreen.storyboard */; };
 		8161394821FDD2EF00A24398 /* CountMemoForEsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8161394721FDD2EF00A24398 /* CountMemoForEsAppTests.swift */; };
 		8161395321FDD40600A24398 /* MemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8161395221FDD40600A24398 /* MemoTableViewController.swift */; };
+		817C6DBC2227172200632C26 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817C6DBB2227172200632C26 /* SearchTableViewCell.swift */; };
 		81BCE7532225A7C50058EA07 /* CustomTableViewCell .swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BCE7522225A7C50058EA07 /* CustomTableViewCell .swift */; };
 		B1B7194522215FA000ED12B0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B1B7194422215FA000ED12B0 /* README.md */; };
 		C2F50E1A616D64F08EB457D1 /* Pods_CountMemoForEsAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E8489B7AABF2FE1A5A2911 /* Pods_CountMemoForEsAppTests.framework */; };
@@ -68,6 +69,7 @@
 		8161394721FDD2EF00A24398 /* CountMemoForEsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountMemoForEsAppTests.swift; sourceTree = "<group>"; };
 		8161394921FDD2EF00A24398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8161395221FDD40600A24398 /* MemoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewController.swift; sourceTree = "<group>"; };
+		817C6DBB2227172200632C26 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchTableViewCell.swift; path = "/Users/ishikawayoko/Downloads/CountMemoForEsApp 3/CountMemoForEsApp/controller/SearchTableViewCell.swift"; sourceTree = "<absolute>"; };
 		81BCE7522225A7C50058EA07 /* CustomTableViewCell .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomTableViewCell .swift"; sourceTree = "<group>"; };
 		9A46EF802300F8041FFB0588 /* Pods-CountMemoForEsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountMemoForEsApp.release.xcconfig"; path = "Target Support Files/Pods-CountMemoForEsApp/Pods-CountMemoForEsApp.release.xcconfig"; sourceTree = "<group>"; };
 		B1B7194422215FA000ED12B0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				814D3BCB220EDDDE0099AC00 /* DetailViewController.swift */,
 				814D3BBF220EB0170099AC00 /* MemoTabBarController.swift */,
 				814D3BCE221030E60099AC00 /* SearchViewController.swift */,
+				817C6DBB2227172200632C26 /* SearchTableViewCell.swift */,
 				81BCE7522225A7C50058EA07 /* CustomTableViewCell .swift */,
 			);
 			path = controller;
@@ -375,6 +378,7 @@
 				8161393821FDD2EE00A24398 /* CountMemoForEsApp.xcdatamodeld in Sources */,
 				814D3BC0220EB0170099AC00 /* MemoTabBarController.swift in Sources */,
 				814D3BD1221035E20099AC00 /* SearchTableViewController.swift in Sources */,
+				817C6DBC2227172200632C26 /* SearchTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
