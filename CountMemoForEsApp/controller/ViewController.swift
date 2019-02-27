@@ -97,8 +97,15 @@ class ViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate {
 
     //入力ごとに文字数をカウントする
     func textViewDidChange(_ textView: UITextView) {
+        let str = memoTextView.text
         let commentNum = memoTextView.text.count
-        memoNumLabel.text = String(commentNum)
+        //空白と改行を抽出して取り除く
+        let newStr = String(str!.unicodeScalars
+            .filter(CharacterSet.whitespacesAndNewlines.contains)
+            .map(Character.init))
+        let numLabel = newStr.count
+        memoNumLabel.text = String(commentNum - numLabel)
+        
     }
     
     func editedMemo(_ memo:Memo){
