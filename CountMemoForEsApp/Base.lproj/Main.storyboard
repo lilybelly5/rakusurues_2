@@ -23,7 +23,6 @@
                         <color key="sectionIndexColor" red="0.22329579420000001" green="0.34013612910000002" blue="0.34016100890000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="sectionIndexBackgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-<<<<<<< Updated upstream
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CustomTableViewCell" rowHeight="80" id="Rtx-xx-mcT" customClass="CustomTableViewCell" customModule="CountMemoForEsApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -56,14 +55,6 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-=======
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CustomTableViewCell" rowHeight="57" id="Rtx-xx-mcT" customClass="CustomTableViewCell" customModule="CountMemoForEsApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="57"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rtx-xx-mcT" id="f4a-Xg-mRG" customClass="CustomTableViewCell" customModule="CountMemoForEsApp" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="56.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
->>>>>>> Stashed changes
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="YzC-gc-MvP" firstAttribute="leading" secondItem="f4a-Xg-mRG" secondAttribute="leadingMargin" constant="10" id="BuG-oH-LSa"/>

@@ -12,11 +12,7 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
     
     //配列作成(coreData) for tableView
     var memoData:[Memo] = []
-<<<<<<< Updated upstream
     
-=======
-
->>>>>>> Stashed changes
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
@@ -27,13 +23,8 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
         editButtonItem.tintColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 //        // tableViewにカスタムセルを登録
 //        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
-<<<<<<< Updated upstream
         tableView.delegate = self
         tableView.dataSource = self
-=======
-//        tableView.delegate = self
-//        tableView.dataSource = self
->>>>>>> Stashed changes
         //編集中のセル選択を許可
         tableView.allowsSelectionDuringEditing = true
         self.tableView.rowHeight = 60
@@ -61,10 +52,6 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
             ]
             memoData = try context.fetch(fetchRequest) as! [Memo]
             
-<<<<<<< Updated upstream
-=======
-            
->>>>>>> Stashed changes
             return
         } catch {
             print("Fetching Failed.")
@@ -83,7 +70,6 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
     
     //セルの作成　rowは何行目か
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-<<<<<<< Updated upstream
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "MemoTitleTableViewCell", for: indexPath)
 //        cell.textLabel?.text = self.memoData[indexPath.row].title
 //        cell.detailTextLabel?.text = self.memoData[indexPath.row].memoNum
@@ -96,22 +82,7 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
 //
 //
 //        cell.cellDisplay(indexNum: indexPath)
-=======
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath)as! CustomTableViewCell
-  
-            cell.titleLabel.text = self.memoData[indexPath.row].title
-            cell.numLabel.text = self.memoData[indexPath.row].memoNum
-            cell.companyLabel.text = self.memoData[indexPath.row].company
->>>>>>> Stashed changes
         
-//
-//        cell.cellDisplay(indexNum: indexPath)
-//        
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath)
-//        cell.textLabel?.text = self.memoData[indexPath.row].title
-//        cell.detailTextLabel?.text = self.memoData[indexPath.row].memoNum
-//
-//
         return cell
     }
     
