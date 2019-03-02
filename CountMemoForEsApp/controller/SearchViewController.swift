@@ -36,6 +36,18 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UISearchDispl
         
         
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // キーボードを閉じる
+        textField.resignFirstResponder()
+        return true
+    }
+    //serchボタンの処理
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        //キーボードを閉じる
+        self.view.endEditing(true)
+    }
     //    セクションの数
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -56,7 +68,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UISearchDispl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "searchToDetail", sender: nil)
+        self.performSegue(withIdentifier: "searchToDetail", sender: self)
     }
  
 
@@ -77,24 +89,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UISearchDispl
             // contextをAddTaskViewController.swiftのcontextへ渡す
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             vc.context = context
-            
-            // 編集したいデータのtitleとcompanyとmemoTextとmemoNumとmemoDataを取得
-            let editedTitle = searchData[(indexPath!.row)].title
-            let editedCompany = searchData[(indexPath!.row)].company
-            let editedMemoText = searchData[(indexPath!.row)].memoText
-            let editedMemoNum = searchData[(indexPath!.row)].memoNum
-            let editedMemoData = searchData[(indexPath!.row)].memoDate
-            
-            // 先ほど取得した5つのデータに合致するデータのみをfetchするようにfetchRequestを作成
-            let fetchRequest: NSFetchRequest<Memo> = Memo.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "title = %@ and company = %@ and memoText = %@ and memoNum = %@ and memoDate = %@", editedTitle!, editedCompany!, editedMemoText!, editedMemoNum!, editedMemoData!)
-            // そのfetchRequestを満たすデータをfetchしてtask(配列だが要素を1種類しか持たないはず）に代入し、それを渡す
-            do {
-                let memo = try context.fetch(fetchRequest)
-                vc.detailData = memo[0]
-            } catch {
-                print("Fetching Failed.")
+
+            if let indexPath = indexPath{
+                vc.detailData = self.searchData[indexPath.row]
             }
+            
         default:
             fatalError("Unknow segue: \(identifier)")
         }

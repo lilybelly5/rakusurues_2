@@ -6,23 +6,21 @@
 
 import UIKit
 import CoreData
-
+import UserNotifications
 
 class MemoTableViewController: UITableViewController, UINavigationControllerDelegate {
     
     //配列作成(coreData) for tableView
     var memoData:[Memo] = []
     
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // 編集ボタンを左上に配置
         navigationItem.leftBarButtonItem = editButtonItem
         editButtonItem.tintColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-//        // tableViewにカスタムセルを登録
-//        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
         //編集中のセル選択を許可
@@ -36,7 +34,6 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
         getData()
         //配列が追加した後もういちどデータをリロードさせる
         tableView.reloadData()
-        
     }
     
     func getData() {
@@ -51,14 +48,35 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
                 NSSortDescriptor(key: "createdAt", ascending: true)
             ]
             memoData = try context.fetch(fetchRequest) as! [Memo]
+
+            for i in 0..<memoData.count{
+                // Notification のインスタンス作成
+                let content = UNMutableNotificationContent()
+                
+                // タイトル、本文の設定
+                let titleTexr = memoData[i].company!
+                content.title = "\(String(describing: titleTexr))"
+                content.body = "エントリーシートの締め切りが迫っています。"
+             
+                let date = memoData[i].alertDate
+
+                if let date = date{
+                    let component = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+                    //トリガー設定
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: true)
+                    //リクエストの設定
+                    let request = UNNotificationRequest.init(identifier: "ID_SpecificTime", content: content, trigger: trigger)
+                    //通知
+                    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                }
+            }
             
             return
         } catch {
             print("Fetching Failed.")
         }
+        
     }
-    
-
     //セクションの数
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -67,7 +85,6 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memoData.count
     }
-    
     //セルの作成　rowは何行目か
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
@@ -78,21 +95,32 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
         
         return cell
     }
-    
     //セルの削除
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let alert: UIAlertController = UIAlertController(title: "注意", message: "削除してもよろしいですか？\n（１度削除したデータは復元できません。）", preferredStyle:  UIAlertController.Style.actionSheet)
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            print("OK")
+        })
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            print("Cancel")
+        })
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+        
+        present(alert, animated: true, completion: nil)
+    
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
          if editingStyle == .delete {
-            // 削除したいデータのcategoryとnameを取得
+
             let deletedMemoData = memoData[indexPath.row]
 
-            do {
-                context.delete(deletedMemoData)
-                memoData.remove(at: indexPath.row)
-            } catch {
-                print("Fetching Failed.")
-            }
+            context.delete(deletedMemoData)
+            memoData.remove(at: indexPath.row)
             
             // 削除したあとのデータを保存する
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
@@ -143,6 +171,5 @@ class MemoTableViewController: UITableViewController, UINavigationControllerDele
             fatalError("Unknow segue: \(identifier)")
         }
      }
-    
 }
 

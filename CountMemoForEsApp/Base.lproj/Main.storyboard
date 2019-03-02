@@ -96,7 +96,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ULM-1i-REv">
-                                <rect key="frame" x="10" y="233" width="355" height="369"/>
+                                <rect key="frame" x="10" y="235" width="355" height="367"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -177,7 +177,6 @@
                             <constraint firstItem="dzt-9A-WcK" firstAttribute="trailing" secondItem="ULM-1i-REv" secondAttribute="trailing" constant="10" id="Ona-S6-F8W"/>
                             <constraint firstItem="dzt-9A-WcK" firstAttribute="trailing" secondItem="UQx-L2-YLy" secondAttribute="trailing" constant="10" id="PH0-4D-Pi0"/>
                             <constraint firstItem="9OH-pK-LZD" firstAttribute="top" secondItem="Dmh-G1-IPh" secondAttribute="bottom" constant="20" id="Sdf-Qo-tpG"/>
-                            <constraint firstItem="ULM-1i-REv" firstAttribute="top" secondItem="9OH-pK-LZD" secondAttribute="bottom" constant="3" id="TSd-SW-0Ra"/>
                             <constraint firstItem="UQx-L2-YLy" firstAttribute="top" secondItem="Dmh-G1-IPh" secondAttribute="bottom" constant="20" id="VVY-9j-XW2"/>
                             <constraint firstItem="9OH-pK-LZD" firstAttribute="leading" secondItem="dzt-9A-WcK" secondAttribute="leading" constant="10" id="agp-kh-5W4"/>
                             <constraint firstItem="ULM-1i-REv" firstAttribute="leading" secondItem="dzt-9A-WcK" secondAttribute="leading" constant="10" id="c7K-Ks-Xt8"/>
@@ -196,7 +195,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="詳細" id="WeO-Qz-Gc1">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="lux-Eq-8VZ">
+                        <barButtonItem key="leftBarButtonItem" style="done" id="lux-Eq-8VZ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="E8J-fx-S3e">
                                 <rect key="frame" x="16" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -209,7 +208,7 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="EDIT" style="plain" id="CcA-dt-2OA">
+                        <barButtonItem key="rightBarButtonItem" title="EDIT" style="done" id="CcA-dt-2OA">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gVh-fh-pLY">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -341,7 +340,7 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="8a1-kg-eHh">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="sL6-RA-yNr">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="sL6-RA-yNr">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mE0-t2-OZ0">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -373,6 +372,7 @@
                         <outlet property="memoNumLabel" destination="nhx-hA-fuc" id="Awc-bX-2w0"/>
                         <outlet property="memoTextView" destination="Hfy-92-Lru" id="vnR-Am-2eS"/>
                         <outlet property="titleField" destination="NIQ-8X-KDL" id="Csx-1k-KKj"/>
+                        <segue destination="56v-jH-zox" kind="show" identifier="returnHome" id="lTw-dc-fuE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -458,8 +458,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9bR-9W-uL1">
+                            <searchBar contentMode="redraw" placeholder="企業名・タイトル名で検索" translatesAutoresizingMaskIntoConstraints="NO" id="9bR-9W-uL1">
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" red="1" green="0.75523883709999995" blue="0.76844782820000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -509,13 +510,13 @@
                                             <outlet property="companyLabel" destination="9Yf-k0-2wY" id="cLS-qh-2Ho"/>
                                             <outlet property="numLabel" destination="gdu-on-X1D" id="aie-Zr-iYZ"/>
                                             <outlet property="titleLabel" destination="adB-pY-R9F" id="0iv-a0-Mvi"/>
-                                            <segue destination="hjM-Xu-zPt" kind="show" identifier="searchToDetail" id="JzW-tg-cUT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="ugy-rL-rHq" firstAttribute="leading" secondItem="qEQ-YQ-lWt" secondAttribute="leading" id="3RP-rf-FBa"/>
                             <constraint firstItem="9bR-9W-uL1" firstAttribute="leading" secondItem="qEQ-YQ-lWt" secondAttribute="leading" id="EYP-rC-05r"/>
@@ -532,6 +533,7 @@
                     <connections>
                         <outlet property="resultTableView" destination="ugy-rL-rHq" id="dcI-fd-ef3"/>
                         <outlet property="searchBar" destination="9bR-9W-uL1" id="89J-vj-rC3"/>
+                        <segue destination="hjM-Xu-zPt" kind="show" identifier="searchToDetail" id="PJU-Oo-EhQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QF5-ZE-RzW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -564,8 +566,9 @@
         <image name="navbar-edit.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JzW-tg-cUT"/>
+        <segue reference="PJU-Oo-EhQ"/>
         <segue reference="mmE-mc-6dJ"/>
+        <segue reference="lTw-dc-fuE"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

@@ -65,27 +65,8 @@ class DetailViewController: UIViewController {
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             vc.context = context
             
-/////////// 問題2の修正箇所 ////////////////
-//            // 編集したいデータのtitleとcompanyとmemoTextとmemoNumとmemoDataを取得
-//            let editedTitle = titleData.text
-//            let editedCompany = companyData.text
-//            let editedMemoText = textData.text
-//            let editedMemoNum = numdata.text
-//            let editedMemoData = dateData.text
-//            // 先ほど取得した5つのデータに合致するデータのみをfetchするようにfetchRequestを作成
-//
-//            let fetchRequest: NSFetchRequest<Memo> = Memo.fetchRequest()
-//            fetchRequest.predicate = NSPredicate(format: "title = %@ and company = %@ and memoText = %@ and memoNum = %@ and memoDate = %@", editedTitle!, editedCompany!, editedMemoText!, editedMemoNum!, editedMemoData!)
-//            // そのfetchRequestを満たすデータをfetchしてtask(配列だが要素を1種類しか持たないはず）に代入し、それを渡す
-//            do {
-//                let memo = try context.fetch(fetchRequest)
-//                vc.memo = memo[0]
-//            } catch {
-//                print("Fetching Failed.")
-//            }
             vc.memo = self.detailData
-/////////////////////////////////////////
-            
+
         default:
             fatalError("Unknow segue: \(identifier)")
         }

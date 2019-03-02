@@ -23,6 +23,8 @@ class ViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate {
     
     //UIDatePickerを定義するための変数
     var datePicker: UIDatePicker = UIDatePicker()
+    //resultDateで１日前を日付計算
+    var resultDate:Date?
     //MemoTableViewConrtollerから引き渡されたcontext
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -32,10 +34,8 @@ class ViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate {
 */
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //デバッグ用
-//        print(memo)
+
     }
-    
     //テキストフィールド以外のところをタップするとキーボードが閉じる
     @IBAction func tapScreen(_ sender: Any) {
         self.view.endEditing(true)
@@ -51,7 +51,6 @@ class ViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate {
         companyField.delegate = self
         dateField.delegate = self
         
-        // メモがなければ新規作成
         if let memo = self.memo{
             //メモの値を表示。
             editedMemo(memo)
@@ -60,7 +59,7 @@ class ViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate {
         // ピッカー設定
         datePicker.datePickerMode = UIDatePicker.Mode.dateAndTime
         datePicker.timeZone = NSTimeZone.local
-        datePicker.locale = Locale.current
+        datePicker.locale = Locale(identifier: "ja")
         dateField.inputView = datePicker
         
         // 決定バーの生成
@@ -85,14 +84,14 @@ class ViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate {
         
         // 日付のフォーマット
         let formatter = DateFormatter()
-        
         //"yyyy年MM月dd日"を"yyyy/MM/dd"したりして出力の仕方を好きに変更できる
         formatter.dateFormat = "yyyy年MM月dd日H時"
-        
-        //(from: datePicker.date))を指定してあげることで
         //datePickerで指定した日付が表示される
         dateField.text = "\(formatter.string(from: datePicker.date))"
-        
+        let pickerTime = datePicker.date
+
+        //前日,日本時間を設定
+        resultDate = calcDate(day: -1 ,hour: 0 ,baseDate: pickerTime)
     }
 
     //入力ごとに文字数をカウントする
@@ -137,10 +136,13 @@ class ViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate {
             // 新規の場合は新しいMemoオブジェクトを作り、現在の日時を入れる_
             let memo: Memo = {
                 if let memo = self.memo {
+                    memo.createdAt = Date()
+                    memo.alertDate = self.resultDate
                     return memo
                 } else {
                     let memo = Memo(context: self.context)
                     memo.createdAt = Date()
+                    memo.alertDate = self.resultDate
                     return memo
                 }
             }()
@@ -150,14 +152,16 @@ class ViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate {
             memo.memoText = self.memoTextView.text
             memo.memoNum = self.memoNumLabel.text
             memo.memoDate = self.dateField.text
-
+            memo.alertDate = self.resultDate
+ 
             // 上で作成したデータをデータベースに保存
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
-
-            self.dismiss(animated: true, completion: nil)
+            self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+//            self.dismiss(animated: true, completion: nil)
 
             //入力値をクリアにする
             self.clearData()
+//            self.performSegue(withIdentifier: "returnHome", sender: self)
         }
         
         func didReceiveMemoryWarning() {
@@ -166,11 +170,11 @@ class ViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate {
         
         alert.dismiss(animated: true, completion: nil)
 
-        // ③ UIAlertControllerにActionを追加
+        // UIAlertControllerにActionを追加
         alert.addAction(cancelAction)
         alert.addAction(okAction)
         
-        // ④ Alertを表示
+        // Alertを表示
         present(alert, animated: true, completion: nil)
         
     }
@@ -206,6 +210,22 @@ class ViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    func calcDate(day:Int ,hour:Int ,baseDate:Date ) -> Date {
+        
+        let formatter = DateFormatter()
+        formatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        var components = DateComponents()
+        
+        components.setValue(day,for: Calendar.Component.day)
+        components.setValue(hour,for: Calendar.Component.hour)
+        
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+
+        return calendar.date(byAdding: components, to: baseDate)!
     }
 }
 
